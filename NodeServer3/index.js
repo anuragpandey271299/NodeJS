@@ -54,6 +54,14 @@ app.patch('/users/:id', async (req,res)=>{
     const {id}=req.params
     const {firstName,lastName,email,phone}=req.body
     await User.findByIdAndUpdate(id,{firstName,lastName,email,phone})
+
+
+
+
+
+
+
+    
     try{
         res.json({
             message:'user details updated',
