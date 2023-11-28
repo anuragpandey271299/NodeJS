@@ -54,17 +54,24 @@ app.patch('/users/:id', async (req,res)=>{
     const {id}=req.params
     const {firstName,lastName,email,phone}=req.body
     await User.findByIdAndUpdate(id,{firstName,lastName,email,phone})
-
-
-
-
-
-
-
-    
     try{
         res.json({
             message:'user details updated',
+        })
+    }
+    catch(error){
+        res.json({
+            message:'FAILED'
+        })
+    }
+})
+
+app.delete('/users/:id', async (req,res)=>{
+    const {id}=req.params
+    await User.findByIdAndDelete(id)
+    try{
+        res.json({
+            message:`user with ID ${id} is DELETED`,
         })
     }
     catch(error){
